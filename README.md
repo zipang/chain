@@ -60,24 +60,7 @@ Now, let's write a simple program that (...)
 const chain = require('chain')
 
 // let's write the most simple chain
-let chain('add')
-
-// building a chain of treatment is as simple as chaining some functions together!
-// conveniently, plugins are just normal functions
-const plugin = () => {
-  // replace all file contents with the string
-  return files => files.map(file => {
-    file.contents = `hey, what's up`
-    return file
-  })
-}
-
+chain('hello', {ensurePluginName: false}).use(str => str + ' World').use(console.log).run('Hello')
 
 ```
 
-Let's save this as `example.js`. To run it, you need Node.js version 7.6 or
-higher. The latest stable version will work.
-
-```sh
-node example.js
-```
